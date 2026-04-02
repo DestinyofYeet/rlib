@@ -34,5 +34,6 @@
       };
 
       packages.x86_64-linux.default = pkgs.callPackage ./pkg.nix { };
+      lib = import ./lib;
     };
 }
