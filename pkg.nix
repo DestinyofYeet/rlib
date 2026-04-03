@@ -4,6 +4,11 @@
   pkgs,
   ...
 }:
+let
+  functions = [
+    "mkMerge"
+  ];
+in
 
 rustPlatform.buildRustPackage {
   pname = "rust-nix-lib";
@@ -15,17 +20,21 @@ rustPlatform.buildRustPackage {
     lld
   ];
 
-  cargoHash = "sha256-gSyWKxnFHJoruAM2K7PEYUjAy9JKOG/hMrdNC4SNy/4=";
+  cargoHash = "sha256-y6vN0Jz0qydzm99BU93SCSyF7SduniLFEw6Wz2mn+WI=";
 
   buildPhase = ''
-    cargo build -r --target wasm32-unknown-unknown
+    cargo build -r --target wasm32-unknown-unknown --all-targets
   '';
 
   installPhase = ''
     mkdir -p $out
     mkdir $out/lib
 
-    cp target/wasm32-unknown-unknown/release/mkmerge_wasm.wasm $out/lib/mkmerge_wasm.wasm
+    ${builtins.concatStringsSep "\n" (
+      map (
+        function: "cp target/wasm32-unknown-unknown/release/${function}.wasm $out/lib/${function}.wasm"
+      ) functions
+    )}
   '';
 
   meta = with lib; {

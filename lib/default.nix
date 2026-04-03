@@ -1,6 +1,6 @@
 {
   mkMerge = builtins.wasm {
-    path = ./mkmerge_wasm.wasm;
+    path = ./mkMerge.wasm;
     function = "mkMerge";
   };
 }
