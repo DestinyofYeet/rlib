@@ -3,6 +3,13 @@
 version = 4
 
 [[package]]
+name = "mkIf"
+version = "0.1.0"
+dependencies = [
+ "nix-wasm-rust",
+]
+
+[[package]]
 name = "mkMerge"
 version = "0.1.0"
 dependencies = [

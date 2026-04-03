@@ -1,0 +1,11 @@
+[package]
+name = "mkIf"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["lib", "cdylib"]
+path = "./lib.rs"
+
+[dependencies]
+nix-wasm-rust = {git = "https://github.com/DeterminateSystems/nix-wasm-rust.git"}

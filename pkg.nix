@@ -7,6 +7,7 @@
 let
   functions = [
     "mkMerge"
+    "mkIf"
   ];
 in
 
@@ -20,7 +21,7 @@ rustPlatform.buildRustPackage {
     lld
   ];
 
-  cargoHash = "sha256-y6vN0Jz0qydzm99BU93SCSyF7SduniLFEw6Wz2mn+WI=";
+  cargoHash = "sha256-ieVYgpFCT4+ST7PcxInHxzu5jiIx2JjPZHR61cZjfQQ=";
 
   buildPhase = ''
     cargo build -r --target wasm32-unknown-unknown --all-targets
