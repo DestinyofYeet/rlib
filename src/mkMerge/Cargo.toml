@@ -9,3 +9,6 @@ path = "./lib.rs"
 
 [dependencies]
 nix-wasm-rust = {git = "https://github.com/DeterminateSystems/nix-wasm-rust.git"}
+
+[lints]
+workspace = true

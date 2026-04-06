@@ -1,3 +1,6 @@
 [workspace]
 resolver = "3"
 members = ["src/mkMerge", "src/mkIf"]
+
+[workspace.lints.rust]
+non_snake_case = "allow"
