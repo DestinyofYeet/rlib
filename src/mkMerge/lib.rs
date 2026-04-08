@@ -9,6 +9,9 @@ pub extern "C" fn mkMerge(arg: Value) -> Value {
     let mut new_values: HashMap<String, Value> = HashMap::new();
 
     for elem in list.into_iter() {
+        if is_null(&elem) {
+            continue;
+        }
         for (key, value) in elem.get_attrset().into_iter() {
             match new_values.remove(&key) {
                 None => {
@@ -57,4 +60,12 @@ fn merge_values(a: Value, b: Value) -> Value {
 
         (_, _) => b,
     }
+}
+
+fn is_null(value: &Value) -> bool {
+    if let Type::Null = value.get_type() {
+        return true;
+    }
+
+    false
 }
