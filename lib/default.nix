@@ -4,8 +4,10 @@
     function = "mkMerge";
   };
 
-  mkIf = builtins.wasm {
-    path = ./mkIf.wasm;
-    function = "mkIf";
-  };
+  mkIf =
+    condition: value:
+    (builtins.wasm {
+      path = ./mkIf.wasm;
+      function = "mkIf";
+    } { inherit condition value; });
 }

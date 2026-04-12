@@ -54,12 +54,8 @@ Flake.nix
 ```nix
 {rlib, ...}:{
 
-  value = rlib.mkIf {
-    condition = true; # true, false, fn call, whatever
-    value = {
-      someValue = 6;
-    }
-  }
+  value = rlib.mkIf true { someValue = 6; };
+  value2 = rlib.mkIf someCondition { otherValue = {}; };
 }
   
 ```
